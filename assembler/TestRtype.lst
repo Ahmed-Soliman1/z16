@@ -1,0 +1,103 @@
+Line   Address   Machine Code    Source
+-----------------------------------------------------
+   1                          # Add some comments to describe the program
+   2                          
+   3                          # the TEXT Section
+   4                              .text
+   5   0x0000                      .org    0
+   6   0x0000                  main:
+   7   0x0000                      # Your code goes here
+   8   0x0000                      # you can use the ABI register names
+   9   0x0000                      # Also, you may end the line with a comment
+  10   0x0000   F6C1             addi s0,-5
+  11   0x0002   64F9             li s0, 50 	//s0 = 50
+  12   0x0004   1539             li s1, 10 	//s1 = 10
+  13   0x0006   08C0             add s0, s1 	//s0 = s0 +s1 (s0=60)
+  14   0x0008   07B8             mv a0, s0 	//a0 = s0     (a0=60)
+  15   0x000A   0047             ecall 1   	//print a0    (60)
+  16   0x000C   0639             li t0, 3      //t0 = 3
+  17   0x000E   10C0             sub s0,t0  //s0 = s0 -3   (s0=57)
+  18   0x0010   07B8             mv a0, s0 	//a0 = s0     (a0=57)
+  19   0x0012   0047             ecall 1   	//print a0    (57)
+  20   0x0014                      
+  21   0x0014   0608             slt t0,s0   //t0 will now be equal 1
+  22   0x0016   01B8             mv a0, t0 	//a0 = t0     (a0=1)
+  23   0x0018   0047             ecall 1   	//print a0    (1)
+  24   0x001A                      
+  25   0x001A   0108             slt s1,t0   //will check if s1<t0 (10<1) no so s1 will be 0
+  26   0x001C   09B8             mv a0, s1 	//a0 = s1     (a0=0)
+  27   0x001E   0047             ecall 1   	//print a0    (0)
+  28   0x0020                  
+  29   0x0020   0AF9             li s0, 5    //s0=5
+  30   0x0022   ED39             li s1, -10  //s1=-10
+  31   0x0024   08D0             sltu s0,s1  //s0=1
+  32   0x0026   07B8             mv a0, s0 	//a0 = s0     (a0=1)
+  33   0x0028   0047             ecall 1   	//print a0    (1)
+  34   0x002A                  
+  35   0x002A   ECF9             li s0, -10    //s0=-10
+  36   0x002C   0B39             li s1, 5  //s1=5
+  37   0x002E   08D0             sltu s0,s1  //s0=0
+  38   0x0030   07B8             mv a0, s0 	//a0 = s0     (a0=0)
+  39   0x0032   0047             ecall 1   	//print a0    (0)
+  40   0x0034                      
+  41   0x0034                      
+  42   0x0034   0579             li t1,2	//t1 = 2
+  43   0x0036   72F9             li s0,57
+  44   0x0038   2AD8             sll s0,t1   //s0 = s0 * 4  
+  45   0x003A   07B8             mv a0, s0 	//a0 = s0     
+  46   0x003C   0047             ecall 1   	//print a0   (228) 
+  47   0x003E                      
+  48   0x003E   C0F9             li s0, -32  // s0= -16
+  49   0x0040   4AD8             srl s0,t1   //s0 = s0 /4  (s0=4) //there will be no sign preservation
+  50   0x0042   07B8             mv a0, s0 	//a0 = s0     will be 4 not -4 
+  51   0x0044   0047             ecall 1   	//print a0    (4)
+  52   0x0046                      
+  53   0x0046   C0F9             li s0, -32  // s0= -16
+  54   0x0048   8AD8             sra s0, t1   //there is sign preservation
+  55   0x004A   07B8             mv a0, s0 	//a0 = s0     (a0=-4)
+  56   0x004C   0047             ecall 1   	//print a0    (-4)
+  57   0x004E                      
+  58   0x004E   0839             li t0,4
+  59   0x0050   0579             li t1,2
+  60   0x0052   1160             or t1,t0 //t1 will be =6
+  61   0x0054   0BB8             mv a0, t1 	//a0 = s0     (a0=6)
+  62   0x0056   0047             ecall 1   	//print a0    (6)
+  63   0x0058                      
+  64   0x0058   0C39             li t0,6
+  65   0x005A   0779             li t1,3
+  66   0x005C   0168             and t1,t0 //t1 will be =2
+  67   0x005E   0BB8             mv a0, t1 	//a0 = s0     (a0=2)
+  68   0x0060   0047             ecall 1   	//print a0    (2)
+  69   0x0062                  
+  70   0x0062   0439             li t0,2
+  71   0x0064   0779             li t1,3
+  72   0x0066   0A30             xor t0,t1 //t0 = t0 ^t1 (t0=2^3)=1
+  73   0x0068   0BB8             mv a0, t1 	//a0 = s0     (a0=1)
+  74   0x006A   0047             ecall 1   	//print a0    (1)
+  75   0x006C                      
+  76   0x006C                     
+  77   0x006C                  
+  78   0x006C                  
+  79   0x006C                      end:
+  80   0x006C   00C7             ecall 3
+  81   0x006E                      
+  82   0x006E                  
+  83   0x006E                  
+  84   0x006E                      # A sample label
+  85   0x006E                      # A label cannot be followed by anything
+  86   0x006E                  
+  87   0x006E                  # The DATA Section
+  88   0x006E                      .data
+  89   0x0000                      # if you don't provide a starting location, the DATA Section
+  90   0x0000                      # starts immediately after the TEXT Section.
+  91   0x0100                      .org    0x100
+  92   0x0100                  
+  93   0x0100                      # Some data definitions
+  94   0x0100                  str:   
+  95   0x0100   6822 6C65 6F6C 7720 726F 646C 21      .asciiz "hello world!"
+  96   0x010D                  A:
+  97   0x010D   32               .byte   50
+  98   0x010E                  B:
+  99   0x010E   23A0 01F4 7530      .word   0x23A0, 500, 30000
+ 100   0x0114                  C:
+ 101   0x0114                      .space  200
