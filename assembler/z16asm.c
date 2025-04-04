@@ -163,7 +163,7 @@
      {"jalr",  INST_R, 0, 0, 0x8},
      {"addi",  INST_I, 1, 0, 0},
      {"slti",  INST_I, 1, 1, 0},
-     {"sltui", INST_I, 1, 2, 0},
+     {"sltiu", INST_I, 1, 2, 0},
      {"slli",  INST_I, 1, 3, 0},
      {"srli",  INST_I, 1, 3, 0},
      {"srai",  INST_I, 1, 3, 0},
