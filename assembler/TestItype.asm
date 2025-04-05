@@ -12,7 +12,15 @@ main:
     mv a0, s0      
     ecall 1        // print 60
 
+    li s1, 5       
+    slti s1,10    
+    mv a0, s1
+    ecall 1        // print 1
 
+    li s1, -5     
+    sltiu s1,10   
+    mv a0, s1
+    ecall 1        // print 0
 
 
     li s0, 3       // s0 = 3
@@ -24,6 +32,12 @@ main:
     srli s0, 2     // s0 = s0 >> 2 (logical shift, s0 = 4)
     mv a0, s0
     ecall 1        // print 4
+
+    li s0, -16      // s0 = -16
+    srli s0, 2     // s0 = s0 >> 2 (logical shift, s0 = 4)
+    mv a0, s0
+    ecall 1        // print 
+
 
     li s0, -16     // s0 = -16
     srai s0, 2     // s0 = s0 >> 2 (arithmetic shift, preserves sign)
@@ -41,7 +55,7 @@ main:
     ecall 1        // print 2
 
     li t0, 2       // t0 = 2 (0010)
-    xori t0, 3     // t0 = t0 ^ 3 (t0 = 1)
+    xori t0, 4     // t0 = t0 ^ 3 (t0 = 1)
     mv a0, t0
     ecall 1        // print 1
 
@@ -49,8 +63,8 @@ main:
     mv a0, s0
     ecall 1        // print 100
 
-    li a7, 10
-    ecall
+  
+    ecall 3 //EXIT
 
     .data
     .org 0x100
