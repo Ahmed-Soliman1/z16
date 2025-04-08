@@ -157,7 +157,7 @@
      {"sra",   INST_R, 0, 3, 0x8},
      {"or",    INST_R, 0, 4, 0x1},
      {"and",   INST_R, 0, 5, 0x0},
-     {"xor",   INST_R, 0, 6, 0x0},
+     {"xor",   INST_R, 0, 6, 0},
      {"mv",    INST_R, 0, 7, 0x0},
      {"jr",    INST_R, 0, 0, 0x4},
      {"jalr",  INST_R, 0, 0, 0x8},
@@ -228,8 +228,7 @@
      return -1;
  }
 
- // Parse an immediate value. Supports decimal, octal, hex, binary, %hi(...) and %lo(...).
- int parseImmediate(const char *token) {
+int parseImmediate(const char *token) {
      if(strncmp(token, "%hi(", 4)==0) {
          const char *p = token + 4;
          char numberStr[64];
@@ -257,6 +256,7 @@
          return (int)strtol(token+2, NULL, 2);
      return (int)strtol(token, NULL, 0);
  }
+
 
  // -----------------------
  // Source Line Structures and Parsing
